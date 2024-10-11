@@ -33,6 +33,7 @@ input[type="text"], select {
   width: 100%;
   padding: 10px;
   margin-bottom: 10px;
+  /* border: 1px solid #ccc; */
   border: 1px solid #ccc;
   border-radius: 4px;
 }
@@ -95,4 +96,36 @@ button:hover {
   content: " (You)";
   color: #007bff;
   font-weight: bold;
+}
+
+.textforsend {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  gap: 10px;
+}
+
+.textforsend button {
+  height: 40px;
+}
+.textforsend input {
+  height: 40px;
+}
+
+.activeUser {
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10px 30px;
+}
+
+.navchatroom {
+  width: 100%;
+  position:fixed;
+  background-color:antiquewhite;
+  top: 0;
+  left: 0;
+  padding: 10px;
+}
+
+.sp {
+  height: 80px;
 }

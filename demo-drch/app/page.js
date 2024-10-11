@@ -48,7 +48,8 @@ export default function Home() {
     <div>
       {!isJoined ? (
         <div>
-          <h2>Enter Chat</h2>
+          <h2>Drive With Me</h2>
+          <div>คุณพี่ชื่ออะไรค้าาาาาา</div>
           <input
             type="text"
             placeholder="Enter your username"
@@ -66,13 +67,18 @@ export default function Home() {
         </div>
       ) : (
         <div>
-          <h1>Chat Room: {room}</h1>
-          <div>
+          <nav class="navchatroom">
+            <h1>Chat Room : {room}</h1>
+          </nav>
+
+          <div class="sp"></div>
+
+          <div class="activeUser">
             <h3>Active Users</h3>
             <ul>
               {/* Display all active users including the current user */}
               {activeUsers.map((user, index) => (
-                <li key={index}>
+                <li class="member" key={index}>
                   {user === username ? `${user} (You)` : user}
                 </li>
               ))}
@@ -83,12 +89,16 @@ export default function Home() {
               <p key={index}>{msg}</p>
             ))}
           </div>
-          <input
-            type="text"
-            value={inputMessage}
-            onChange={(e) => setInputMessage(e.target.value)}
-          />
-          <button onClick={sendMessage}>Send</button>
+
+          <div class="textforsend">
+            <input
+              type="text"
+              value={inputMessage}
+              onChange={(e) => setInputMessage(e.target.value)}
+            />
+            <button onClick={sendMessage}>Send</button>
+          </div>
+          
         </div>
       )}
     </div>
