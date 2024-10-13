@@ -19,7 +19,7 @@
 
 # INSTALL
 
-  **1. clone git**
+  **1. CLONE GIT**
   ``` bash
   git clone https://github.com/ProJect3K/DEMO-DriveChat-kmitl.git
   ```
