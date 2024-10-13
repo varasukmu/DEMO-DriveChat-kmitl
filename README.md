@@ -9,6 +9,8 @@
 
 ## CLONE GIT
 
+**จะใช้ terminal หรือ Github Desktop ในการ Clone ก็ได้**
+
 ``` bash
   git clone https://github.com/ProJect3K/DEMO-DriveChat-kmitl.git
 ```
