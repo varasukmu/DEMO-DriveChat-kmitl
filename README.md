@@ -17,10 +17,10 @@ git clone https://github.com/ProJect3K/DEMO-DriveChat-kmitl.git
 - New Terminal
 
   ![](https://drive.google.com/uc?export=view&id=1gwGcJBp5f_Q9fQ0luyI69tcrecogdFR_)
-
+  
 - กดลูกศรชี้ลง ขวาล่าง
 
-  ![](https://drive.google.com/uc?export=view&id=1B5wOJQuKhBdIXXkE9RVGH6zPEq_lMC9r)
+  ![](https://drive.google.com/uc?export=view&id=1B8eIcyHWJNJxQoNWKPMcW4pgO45LwGoE)
 
 - เลือก Command Prompt
 
