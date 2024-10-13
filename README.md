@@ -9,11 +9,12 @@
 git clone https://github.com/ProJect3K/DEMO-DriveChat-kmitl.git
 ```
 **2. เปิด **
-![enter image description here](https://drive.google.com/file/d/1A7Idbt7VLU0EbFtlIPfugRgRfkZGDoUs/view?usp=sharing)
+
+![enter image description here](https://drive.google.com/uc?export=view&id=1A7Idbt7VLU0EbFtlIPfugRgRfkZGDoUs)
+
 ``` bash
 pip install -r requirements.txt && cd demo-drch && npm install
 ```
-
 
 ## RUN
 
