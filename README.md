@@ -4,8 +4,9 @@
 
 **วิธี INSTALL และวิธี RUN**
 
+# LOCALHOST
 
-# SELECT INTERPRETER
+## SELECT INTERPRETER
 
   - Ctrl + Shift + P
 
@@ -18,13 +19,13 @@
   - เลือก Python 3.13.0 64-bit
 
 
-# CLONE GIT
+## CLONE GIT
 
 ``` bash
   git clone https://github.com/ProJect3K/DEMO-DriveChat-kmitl.git
 ```
 
-# CREATE .VENV
+## CREATE .VENV
 
   - New Terminal
 
@@ -50,7 +51,7 @@
     .venv\Scripts\activate
     ```
 
-# INSTALL
+## INSTALL
 
   - Install package
 
@@ -61,7 +62,7 @@
 
 
 
-# RUN
+## RUN
 
 ``` bash
 
