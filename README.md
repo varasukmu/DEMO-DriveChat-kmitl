@@ -55,9 +55,9 @@
 
   - พิมพ์ว่า python select interpreter แล้ว Enter
 
-    ![](https://drive.google.com/uc?export=view&id=1x3TFg3W7S3CEIcy9bJckexU-8fdP8pEM)
+    ![](https://drive.google.com/uc?export=view&id=1ww6wB2unkBgW9OUZvmnFc8LgLmU8piaj)
 
-  - เลือก Python 3.13.0 64-bit
+  - เลือก Python 3.13.0 ('.venv':venv)
 
 ## RUN
 
