@@ -14,7 +14,7 @@ git clone https://github.com/ProJect3K/DEMO-DriveChat-kmitl.git
 
 - New Terminal
 
-  ![](https://drive.google.com/uc?export=view&id=1gwGcJBp5f_Q9fQ0luyI69tcrecogdFR)
+  ![](https://drive.google.com/uc?export=view&id=1gwGcJBp5f_Q9fQ0luyI69tcrecogdFR_)
 
 - กดลูกศรชี้ลง ขวาล่าง
 
