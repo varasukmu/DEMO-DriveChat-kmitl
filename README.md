@@ -25,7 +25,7 @@ git clone https://github.com/ProJect3K/DEMO-DriveChat-kmitl.git
   ![](https://drive.google.com/uc?export=view&id=1VflNrATWNsp8vaRnsAH2XxBQJqHTjuw1)
 
  
- - Activate .venv
+ - พิมพ์ใน Command Prompt เพื่อ Activate .venv
 ``` bash
 .venv\Scripts\activate
 ```
