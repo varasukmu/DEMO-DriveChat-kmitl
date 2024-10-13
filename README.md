@@ -28,14 +28,14 @@ git clone https://github.com/ProJect3K/DEMO-DriveChat-kmitl.git
 
  
  - พิมพ์ใน Command Prompt เพื่อ Activate .venv
-``` bash
-.venv\Scripts\activate
-```
+    ``` bash
+    .venv\Scripts\activate
+    ```
  
  - Install package
-``` bash
-pip install -r requirements.txt && cd demo-drch && npm install
-```
+    ``` bash
+    pip install -r requirements.txt && cd demo-drch && npm install
+    ```
 
 
 
