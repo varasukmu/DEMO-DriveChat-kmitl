@@ -17,20 +17,20 @@
 
   - เลือก Python 3.13.0 64-bit
 
-# INSTALL
 
-  **1. CLONE GIT**
-  ``` bash
+# CLONE GIT
+
+``` bash
   git clone https://github.com/ProJect3K/DEMO-DriveChat-kmitl.git
-  ```
+```
 
-  **2. INSTALL**
+# CREATE .VENV
 
   - New Terminal
 
     ![](https://drive.google.com/uc?export=view&id=1gwGcJBp5f_Q9fQ0luyI69tcrecogdFR_)
 
-  - กดลูกศรชี้ลง ขวาล่าง
+  - กดลูกศรชี้ลง มุมขวาล่างของจอ
 
     ![](https://drive.google.com/uc?export=view&id=1B8eIcyHWJNJxQoNWKPMcW4pgO45LwGoE)
 
@@ -38,13 +38,22 @@
 
     ![](https://drive.google.com/uc?export=view&id=1VflNrATWNsp8vaRnsAH2XxBQJqHTjuw1)
 
+  - สร้าง .venv
 
-  - พิมพ์ใน Command Prompt เพื่อ Activate .venv
+    ``` bash
+    py -m venv .venv
+    ```
+
+    - Activate .venv
+
     ``` bash
     .venv\Scripts\activate
     ```
 
+# INSTALL
+
   - Install package
+
     ``` bash
     pip install -r requirements.txt && cd demo-drch && npm install
     ```
