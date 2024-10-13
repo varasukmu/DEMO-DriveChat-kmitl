@@ -1,5 +1,7 @@
 # DEMO-DRIVECHAT
 
+**แนะนำpython 3.13.0**
+
 **วิธี INSTALL และวิธี RUN**
 
 
