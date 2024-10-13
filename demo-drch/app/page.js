@@ -13,7 +13,7 @@ export default function Home() {
 
   const joinChat = () => {
     if (username && room) {
-      socket.current = new WebSocket(`ws://localhost:8000/ws/${room}/${username}`);
+      socket.current = new WebSocket(`ws://127.0.0.1:8000/ws/${room}/${username}`);
       
       socket.current.onmessage = function(event) {
         const message = event.data;
