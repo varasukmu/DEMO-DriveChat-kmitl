@@ -13,7 +13,7 @@
 
   - พิมพ์ว่า python select interpreter แล้ว Enter
 
-    ![](https://drive.google.com/uc?export=view&id=1A6al-cCY4ZDgu-xn05m-fSIf2WI4LbiN)
+    ![](https://drive.google.com/uc?export=view&id=12OD6oRj9Z7YYPqyz3iORZ2WKZNp-34rZ)
 
   - เลือก Python 3.13.0 64-bit
 
