@@ -1,23 +1,11 @@
 # DEMO-DRIVECHAT
 
-**แนะนำpython 3.13.0 และโหลดผ่าน website ของ python https://www.python.org/**
+**requirementREQUIREMENT**
 
-**วิธี INSTALL และวิธี RUN**
+  1. python 3.13.0 https://www.python.org/downloads/release/python-3130 แล้วเลือก Windows installer (64-bit)
+  2. node.js 20.18.0 https://nodejs.org/en/download/prebuilt-installer แล้วเลือก v20.18.0(LTS), Windows, x64
 
 # LOCALHOST
-
-## SELECT INTERPRETER
-
-  - Ctrl + Shift + P
-
-    ![](https://drive.google.com/uc?export=view&id=1uB3I4gi5m80Bfia36MAJUrMvB6AcxGHg)
-
-  - พิมพ์ว่า python select interpreter แล้ว Enter
-
-    ![](https://drive.google.com/uc?export=view&id=1x3TFg3W7S3CEIcy9bJckexU-8fdP8pEM)
-
-  - เลือก Python 3.13.0 64-bit
-
 
 ## CLONE GIT
 
@@ -59,14 +47,31 @@
     pip install -r requirements.txt && cd demo-drch && npm install
     ```
 
+## SELECT INTERPRETER
 
+  - Ctrl + Shift + P
 
+    ![](https://drive.google.com/uc?export=view&id=1uB3I4gi5m80Bfia36MAJUrMvB6AcxGHg)
+
+  - พิมพ์ว่า python select interpreter แล้ว Enter
+
+    ![](https://drive.google.com/uc?export=view&id=1x3TFg3W7S3CEIcy9bJckexU-8fdP8pEM)
+
+  - เลือก Python 3.13.0 64-bit
 
 ## RUN
 
-``` bash
+  - เข้า folder demo-drch
 
-```
+  ``` bash
+  cd demo-drch
+  ```
+
+  - run server & website
+
+  ``` bash
+  npm run dev:both
+  ```
 
 # CREDIT
 **บ่ต้องอยากรู้ดอก**
