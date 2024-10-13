@@ -20,7 +20,7 @@ git clone https://github.com/ProJect3K/DEMO-DriveChat-kmitl.git
 
 - กดลูกศรชี้ลง ขวาล่าง
 
-  ![](https://drive.google.com/uc?export=view&id=1HWHTPN_ONdrvHMZGHvA86bGT87-Xr4MH)
+  ![](https://drive.google.com/uc?export=view&id=1B5wOJQuKhBdIXXkE9RVGH6zPEq_lMC9r)
 
 - เลือก Command Prompt
 
