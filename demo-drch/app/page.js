@@ -1,6 +1,83 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+<<<<<<< Updated upstream
+=======
+import { Bus, Car, MapPin, Bike } from 'lucide-react';
+
+const ROOM_TYPES = {
+  BIKE: 'motorcycle',
+  CAR: 'taxi',
+  LOCATION: 'location',
+  BUS: 'evmini'
+};
+
+const TransportButtons = ({ onSelectType, selectedType }) => {
+  return (
+    <div className="flex flex-col gap-2 max-w-sm w-full mb-4">
+      <div className="flex gap-2">
+        <button 
+          onClick={() => onSelectType(ROOM_TYPES.BIKE)}
+          className={`flex-1 flex items-center rounded-lg overflow-hidden border border-gray-200 ${
+            selectedType === ROOM_TYPES.BIKE ? 'border-blue-500' : ''
+          }`}
+        >
+          <div className={`flex items-center gap-2 py-2 px-3 w-full ${
+            selectedType === ROOM_TYPES.BIKE ? 'bg-blue-50' : 'bg-white'
+          }`}>
+            <Bike className="w-5 h-5 text-gray-600" />
+            <span className="text-sm text-gray-600">มอเตอร์ไซค์</span>
+          </div>
+        </button>
+
+        <button 
+          onClick={() => onSelectType(ROOM_TYPES.CAR)}
+          className={`flex-1 flex items-center rounded-lg overflow-hidden border border-gray-200 ${
+            selectedType === ROOM_TYPES.CAR ? 'border-orange-500' : ''
+          }`}
+        >
+          <div className={`flex items-center gap-2 py-2 px-3 w-full ${
+            selectedType === ROOM_TYPES.CAR ? 'bg-orange-100' : 'bg-white'
+          }`}>
+            <Car className="w-5 h-5 text-orange-500" />
+            <span className="text-sm text-orange-500">แท้กซี่</span>
+          </div>
+        </button>
+      </div>
+
+      <div className="flex gap-2">
+        <button 
+          onClick={() => onSelectType(ROOM_TYPES.LOCATION)}
+          className={`flex-1 flex items-center rounded-lg overflow-hidden border border-gray-200 ${
+            selectedType === ROOM_TYPES.LOCATION ? 'border-blue-500' : ''
+          }`}
+        >
+          <div className={`flex items-center gap-2 py-2 px-3 w-full ${
+            selectedType === ROOM_TYPES.LOCATION ? 'bg-blue-50' : 'bg-white'
+          }`}>
+            <MapPin className="w-5 h-5 text-gray-600" />
+            <span className="text-sm text-gray-600">สองแถว</span>
+          </div>
+        </button>
+
+        <button 
+          onClick={() => onSelectType(ROOM_TYPES.BUS)}
+          className={`flex-1 flex items-center rounded-lg overflow-hidden border border-gray-200 ${
+            selectedType === ROOM_TYPES.BUS ? 'border-blue-500' : ''
+          }`}
+        >
+          <div className={`flex items-center gap-2 py-2 px-3 w-full ${
+           selectedType === ROOM_TYPES.BUS ? 'bg-blue-50' : 'bg-white'
+          }`}>
+            <Bus className="w-5 h-5 text-gray-600" />
+            <span className="text-sm text-gray-600">Ev มินิบัส</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  );
+};
+>>>>>>> Stashed changes
 
 export default function Home() {
   const [messages, setMessages] = useState([]);
