@@ -125,21 +125,22 @@ export default function Home() {
   };
 
   const joinRandomRoom = async () => {
-    if (!username) {
-      alert('Please enter a username first');
+    if (!username || !selectedType) {
+      alert('Please enter a username and select a room type');
       return;
     }
-    
+  
     setIsLoading(true);
     try {
-      const response = await fetch('http://127.0.0.1:8000/rooms/random');
+      // Send the selected room type as a query parameter to filter rooms by type
+      const response = await fetch(`http://127.0.0.1:8000/rooms/random?room_type=${selectedType}`);
       const data = await response.json();
       if (data.room) {
         setRoom(data.room);
         setRoomCapacity(data.capacity);
         joinChat(data.room);
       } else {
-        alert('No rooms available. Please create a new room to start chatting.');
+        alert('No rooms available for the selected type. Please create a new room.');
       }
     } catch (error) {
       console.error('Error joining random room:', error);
