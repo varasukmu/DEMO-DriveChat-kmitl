@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { ROOM_TYPES } from '../lib/constants';
 import TransportButtons from './TransportButtons';
 
@@ -19,6 +20,8 @@ export default function JoinChat({
   setRoomCapacity,
   joinChat
 }) {
+  const [userType, setUserType] = useState(null);
+
   const getCapacityByType = (type) => {
     switch(type) {
       case ROOM_TYPES.BIKE: return 2;
@@ -36,6 +39,12 @@ export default function JoinChat({
     }
   };
 
+  const handleUserTypeSelect = (type) => {
+    setUserType(type);
+    // Reset transport type when user type changes
+    setSelectedType(null);
+  };
+
   const handleRoomNameChange = (e) => {
     const value = e.target.value;
     setRoomName(value);
@@ -47,14 +56,14 @@ export default function JoinChat({
   };
 
   const joinRandomRoom = async () => {
-    if (!username || !selectedType) {
-      alert('Please enter a username and select a room type');
+    if (!username || !selectedType || !userType) {
+      alert('Please enter a username, select your role, and select a transport type');
       return;
     }
   
     setIsLoading(true);
     try {
-      const response = await fetch(`http://127.0.0.1:8000/rooms/random?room_type=${selectedType}`);
+      const response = await fetch(`http://127.0.0.1:8000/rooms/random?room_type=${selectedType}&user_type=${userType}`);
       const data = await response.json();
       if (data.room) {
         setRoom(data.room);
@@ -71,8 +80,8 @@ export default function JoinChat({
   };
 
   const createRoom = async () => {
-    if (!username || !selectedType) {
-      alert('Please enter a username and select a room type');
+    if (!username || !selectedType || !userType) {
+      alert('Please enter a username, select your role, and select a transport type');
       return;
     }
     
@@ -86,7 +95,8 @@ export default function JoinChat({
         },
         body: JSON.stringify({ 
           room_name: customRoom,
-          capacity: capacity
+          capacity: capacity,
+          creator_type: userType
         }),
       });
       
@@ -120,10 +130,12 @@ export default function JoinChat({
       
       {isCreatingRoom ? (
         <div className="w-full">
-          <h3 className="text-lg font-medium mb-4">Select Room Type</h3>
+          <h3 className="text-lg font-medium mb-4">Create New Room</h3>
           <TransportButtons 
             onSelectType={handleTypeSelect}
             selectedType={selectedType}
+            userType={userType}
+            onSelectUserType={handleUserTypeSelect}
           />
           <input
             type="text"
@@ -135,7 +147,7 @@ export default function JoinChat({
           <div className="flex gap-3">
             <button 
               onClick={createRoom} 
-              disabled={isLoading || !username || !selectedType}
+              disabled={isLoading || !username || !selectedType || !userType}
               className="flex-1 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
             >
               {isLoading ? 'Creating...' : 'Create & Join Room'}
@@ -144,7 +156,6 @@ export default function JoinChat({
               onClick={() => {
                 setIsCreatingRoom(false);
                 setRoomName("");
-                // Don't reset selectedType when canceling room creation
               }} 
               disabled={isLoading}
               className="flex-1 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 disabled:bg-gray-50 disabled:text-gray-400 disabled:cursor-not-allowed transition-colors"
@@ -158,11 +169,13 @@ export default function JoinChat({
           <TransportButtons 
             onSelectType={handleTypeSelect}
             selectedType={selectedType}
+            userType={userType}
+            onSelectUserType={handleUserTypeSelect}
           />
           <div className="flex gap-3">
             <button 
               onClick={joinRandomRoom} 
-              disabled={isLoading || !username || !selectedType}
+              disabled={isLoading || !username || !selectedType || !userType}
               className="flex-1 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 disabled:bg-gray-300 disabled:cursor-not-allowed transition-colors"
             >
               {isLoading ? 'Finding room...' : 'Join Random Room'}
@@ -170,7 +183,7 @@ export default function JoinChat({
             <button 
               onClick={() => {
                 setIsCreatingRoom(true);
-                setRoomName(""); // Reset room name when creating new room
+                setRoomName("");
               }} 
               disabled={isLoading}
               className="flex-1 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 disabled:bg-gray-50 disabled:text-gray-400 disabled:cursor-not-allowed transition-colors"
