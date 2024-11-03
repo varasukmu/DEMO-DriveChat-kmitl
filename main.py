@@ -27,10 +27,14 @@ class ConnectionManager:
         self.room_cleanup_tasks: dict[str, Optional[asyncio.Task]] = {}
 
     async def connect(self, websocket: WebSocket, room: str, username: str):
+        # Check if room exists
+        if room not in self.available_rooms:
+            raise HTTPException(status_code=400, detail="Room does not exist")
+            
         # Check if room is full
         if (room in self.active_users and 
             len(self.active_users[room]) >= self.available_rooms[room]):
-            raise HTTPException(status_code=400, message="Room is full")
+            raise HTTPException(status_code=400, detail="Room is full")
             
         await websocket.accept()
         
@@ -76,12 +80,17 @@ class ConnectionManager:
         return self.available_rooms.get(room, 0)
 
     def get_random_active_room(self) -> str:
-        active_rooms = [
-            room for room, capacity in self.available_rooms.items()
-            if self.get_room_count(room) > 0 and 
-            self.get_room_count(room) < capacity
-        ]
-        return random.choice(active_rooms) if active_rooms else None
+        available_rooms = []
+        for room_name, capacity in self.available_rooms.items():
+            current_users = self.get_room_count(room_name)
+            if current_users > 0 and current_users < capacity:
+                available_rooms.append({
+                    "room": room_name,
+                    "capacity": capacity,
+                    "current_users": current_users
+                })
+        
+        return random.choice(available_rooms) if available_rooms else None
 
     async def send_personal_message(self, message: str, websocket: WebSocket):
         await websocket.send_text(message)
@@ -116,16 +125,23 @@ async def create_room(room_data: RoomCreate):
     return {"message": f"Room {room_name} created successfully", "capacity": capacity}
 
 @app.get("/rooms/random")
-async def get_random_room():
-    random_room = manager.get_random_active_room()
-    if random_room:
-        capacity = manager.get_room_capacity(random_room)
-        current_users = manager.get_room_count(random_room)
-        return {
-            "room": random_room,
-            "capacity": capacity,
-            "current_users": current_users
-        }
+async def get_random_room(transport_type: str):
+    available_rooms = []
+    for room_name, capacity in manager.available_rooms.items():
+        # Filter rooms by transport type
+        if room_name.startswith(transport_type):
+            current_users = manager.get_room_count(room_name)
+            # Changed condition: now includes empty rooms and non-full rooms
+            if current_users < capacity:
+                available_rooms.append({
+                    "room": room_name,
+                    "capacity": capacity,
+                    "current_users": current_users
+                })
+    
+    if available_rooms:
+        chosen_room = random.choice(available_rooms)
+        return chosen_room
     return {"room": None, "message": "No suitable rooms available"}
 
 @app.websocket("/ws/{room}/{username}")
@@ -148,3 +164,10 @@ async def websocket_endpoint(websocket: WebSocket, room: str, username: str):
         manager.disconnect(websocket, room, username)
         await manager.broadcast(f"{username} left the chat room.", room)
         await manager.broadcast_user_list(room)
+@app.get("/rooms/debug")
+async def debug_rooms():
+    return {
+        "available_rooms": manager.available_rooms,
+        "active_users": manager.active_users,
+        "active_connections": {room: len(conns) for room, conns in manager.active_connections.items()}
+    }

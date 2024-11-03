@@ -66,19 +66,26 @@ export default function JoinChat({
   
     setIsLoading(true);
     try {
-      const response = await fetch(`http://127.0.0.1:8000/rooms/random?room_type=${selectedType}&user_type=${userType}`);
+      // First, let's debug what rooms are available
+      const debugResponse = await fetch('http://127.0.0.1:8000/rooms/debug');
+      const debugData = await debugResponse.json();
+      console.log('Available rooms:', debugData);
+  
+      // Now try to join a room
+      const response = await fetch(`http://127.0.0.1:8000/rooms/random?transport_type=${selectedType}`);
       const data = await response.json();
+      console.log('Join room response:', data);
       
-      // Check if room exists and matches the selected type
-      if (data.room && data.room.startsWith(selectedType)) {
+      if (data.room) {
+        console.log('Joining room:', data.room);
         setRoom(data.room);
         setRoomCapacity(data.capacity);
         joinChat(data.room);
       } else {
-        // Show noRoomsAvailable for passengers, prompt room creation for drivers
+        console.log('No room available, userType:', userType);
         if (userType === 'passenger') {
           setNoRoomsAvailable(true);
-        } else {
+        } else if (userType === 'driver') {
           setIsCreatingRoom(true);
         }
       }
@@ -98,6 +105,8 @@ export default function JoinChat({
     setIsLoading(true);
     try {
       const capacity = getCapacityByType(selectedType);
+      console.log('Creating room:', customRoom, 'with capacity:', capacity);
+      
       const response = await fetch('http://127.0.0.1:8000/rooms', {
         method: 'POST',
         headers: {
@@ -112,12 +121,14 @@ export default function JoinChat({
       
       if (response.ok) {
         const data = await response.json();
+        console.log('Room created successfully:', data);
         setRoom(customRoom);
         setRoomCapacity(data.capacity);
         setIsCreatingRoom(false);
         joinChat(customRoom);
       } else {
         const error = await response.json();
+        console.error('Error response:', error);
         alert(error.detail);
       }
     } catch (error) {
