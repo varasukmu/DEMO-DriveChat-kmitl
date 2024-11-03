@@ -8,13 +8,13 @@ export default function TransportButtons({ onSelectType, selectedType }) {
         <button 
           onClick={() => onSelectType(ROOM_TYPES.BIKE)}
           className={`flex-1 rounded-lg overflow-hidden border ${
-            selectedType === ROOM_TYPES.BIKE ? 'border-blue-500' : 'border-gray-200'
+            selectedType === ROOM_TYPES.BIKE ? 'border-orange-500' : 'border-gray-200'
           }`}
         >
           <div className={`flex items-center gap-2 py-2 px-3 w-full ${
-            selectedType === ROOM_TYPES.BIKE ? 'bg-blue-50' : 'bg-white'
+            selectedType === ROOM_TYPES.BIKE ? 'border-orange-500' : 'border-gray-200'
           }`}>
-            <Bike className="w-5 h-5 text-gray-600" />
+            <Bike className='border-orange-500' />
             <span className="text-sm text-gray-600">มอเตอร์ไซค์</span>
           </div>
         </button>
@@ -28,8 +28,8 @@ export default function TransportButtons({ onSelectType, selectedType }) {
           <div className={`flex items-center gap-2 py-2 px-3 w-full ${
             selectedType === ROOM_TYPES.CAR ? 'bg-orange-100' : 'bg-white'
           }`}>
-            <Car className="w-5 h-5 text-orange-500" />
-            <span className="text-sm text-orange-500">แท็กซี่</span>
+            <Car className='border-orange-500' />
+            <span className="text-sm text-gray-600">แท็กซี่</span>
           </div>
         </button>
       </div>
@@ -38,13 +38,13 @@ export default function TransportButtons({ onSelectType, selectedType }) {
         <button 
           onClick={() => onSelectType(ROOM_TYPES.LOCATION)}
           className={`flex-1 rounded-lg overflow-hidden border ${
-            selectedType === ROOM_TYPES.LOCATION ? 'border-blue-500' : 'border-gray-200'
+            selectedType === ROOM_TYPES.LOCATION ? 'border-orange-500' : 'border-gray-200'
           }`}
         >
           <div className={`flex items-center gap-2 py-2 px-3 w-full ${
             selectedType === ROOM_TYPES.LOCATION ? 'bg-blue-50' : 'bg-white'
           }`}>
-            <MapPin className="w-5 h-5 text-gray-600" />
+            <MapPin className='border-orange-500' />
             <span className="text-sm text-gray-600">สองแถว</span>
           </div>
         </button>
@@ -52,13 +52,13 @@ export default function TransportButtons({ onSelectType, selectedType }) {
         <button 
           onClick={() => onSelectType(ROOM_TYPES.BUS)}
           className={`flex-1 rounded-lg overflow-hidden border ${
-            selectedType === ROOM_TYPES.BUS ? 'border-blue-500' : 'border-gray-200'
+            selectedType === ROOM_TYPES.BUS ? 'border-orange-500' : 'border-gray-200'
           }`}
         >
 <div className={`flex items-center gap-2 py-2 px-3 w-full ${
             selectedType === ROOM_TYPES.BUS ? 'bg-blue-50' : 'bg-white'
           }`}>
-            <Bus className="w-5 h-5 text-gray-600" />
+            <Bus className='border-orange-500' />
             <span className="text-sm text-gray-600">Ev มินิบัส</span>
           </div>
         </button>
